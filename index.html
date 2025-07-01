@@ -1,0 +1,524 @@
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人资源中心 | 你的名字</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Tailwind配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#36D399',
+            dark: '#1E293B',
+            light: '#F8FAFC'
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <!-- 自定义工具类 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+    }
+  </style>
+</head>
+<body class="font-inter bg-light text-dark min-h-screen flex flex-col">
+  <!-- 导航栏 -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-2">
+          <div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white">
+            <i class="fa fa-user-circle text-xl"></i>
+          </div>
+          <span class="text-xl font-bold">Floatingoceanee</span>
+        </div>
+        
+        <!-- 桌面导航 -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="text-dark hover:text-primary transition-colors">关于我</a>
+          <a href="#resources" class="text-dark hover:text-primary transition-colors">资源下载</a>
+          <a href="#contact" class="text-dark hover:text-primary transition-colors">联系方式</a>
+        </nav>
+        
+        <!-- 移动端菜单按钮 -->
+        <button id="menu-toggle" class="md:hidden text-dark hover:text-primary">
+          <i class="fa fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- 移动端导航菜单 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+      <div class="container mx-auto px-4 py-3 space-y-3">
+        <a href="#about" class="block py-2 text-dark hover:text-primary transition-colors">关于我</a>
+        <a href="#resources" class="block py-2 text-dark hover:text-primary transition-colors">资源下载</a>
+        <a href="#contact" class="block py-2 text-dark hover:text-primary transition-colors">联系方式</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容 -->
+  <main class="flex-grow">
+    <!-- 英雄区域 -->
+    <section class="relative bg-gradient-to-br from-primary to-primary/80 text-white py-20 md:py-32">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-shadow mb-6">
+            你好，我是<span class="text-secondary">Yvonne Wang</span>
+          </h1>
+          <p class="text-[clamp(1.1rem,2vw,1.3rem)] text-white/90 mb-8 max-w-2xl mx-auto">这里是我的个人资源中心，你可以找到我的作品集、简历和其他相关资源。</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#resources" class="px-8 py-3 bg-white text-primary font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">浏览资源 </a>
+            <a href="#contact" class="px-8 py-3 bg-secondary text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">联系我 </a>
+          </div>
+        </div>
+      </div>
+      <!-- 装饰图形 -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        <div class="absolute left-1/4 bottom-10 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+      </div>
+    </section>
+
+    <!-- 关于我部分 -->
+    <section id="about" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dark mb-4">关于我</h2>
+            <div class="w-20 h-1 bg-primary mx-auto"></div>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-300">
+              <img src="https://picsum.photos/600/700" alt="个人照片" class="w-full h-auto object-cover">
+            </div>
+            
+            <div>
+              <h3 class="text-2xl font-bold mb-6">个人简介</h3>
+              <p class="text-gray-700 mb-6 leading-relaxed">你可以在这里简要介绍一下自己，比如你的职业、专业领域、工作经验等。 这是一个展示你个人背景和专业技能的好机会。</p>
+              <p class="text-gray-700 mb-8 leading-relaxed">
+                你还可以详细描述你的专业技能、成就、兴趣爱好等，让访问者更好地了解你。
+                保持内容简洁明了，但也要突出你的优势和特点。
+              </p>
+              
+              <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="flex items-center">
+                  <i class="fa fa-briefcase text-primary mr-3"></i>
+                  <span>你的职业</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fa fa-envelope text-primary mr-3"></i>
+                  <span>your.email@example.com</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fa fa-phone text-primary mr-3"></i>
+                  <span>你的联系电话</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fa fa-map-marker text-primary mr-3"></i>
+                  <span>你的所在地</span>
+                </div>
+              </div>
+              
+              <div class="flex space-x-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                  <i class="fa fa-github"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                  <i class="fa fa-twitter"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                  <i class="fa fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 资源下载部分 -->
+    <section id="resources" class="py-16 md:py-24 bg-gray-50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dark mb-4">资源下载</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            这里是我的一些个人资源，你可以下载使用。如果有任何问题，请随时联系我。
+          </p>
+          <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- 资源卡片1 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="h-48 bg-primary/10 flex items-center justify-center">
+              <i class="fa fa-file-pdf-o text-6xl text-primary"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">个人简历</h3>
+              <p class="text-gray-600 mb-4">这是我的最新简历，包含我的教育背景、工作经验和专业技能。</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">
+                  <i class="fa fa-calendar mr-1"></i> 2025年6月
+                </span>
+                <a href="#" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+                  <i class="fa fa-download mr-1"></i> 下载
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 资源卡片2 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="h-48 bg-secondary/10 flex items-center justify-center">
+              <i class="fa fa-file-image-o text-6xl text-secondary"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">作品集</h3>
+              <p class="text-gray-600 mb-4">这里包含了我近年来的一些代表性作品和项目案例。</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">
+                  <i class="fa fa-calendar mr-1"></i> 2025年5月
+                </span>
+                <a href="#" class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-colors">
+                  <i class="fa fa-download mr-1"></i> 下载
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 资源卡片3 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="h-48 bg-primary/10 flex items-center justify-center">
+              <i class="fa fa-file-text-o text-6xl text-primary"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">技术文档</h3>
+              <p class="text-gray-600 mb-4">我的一些技术文章和专业文档，供大家参考和学习。</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">
+                  <i class="fa fa-calendar mr-1"></i> 2025年6月
+                </span>
+                <a href="#" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+                  <i class="fa fa-download mr-1"></i> 下载
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 资源卡片4 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="h-48 bg-secondary/10 flex items-center justify-center">
+              <i class="fa fa-file-powerpoint-o text-6xl text-secondary"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">演讲幻灯片</h3>
+              <p class="text-gray-600 mb-4">我在各种技术会议和活动中的演讲幻灯片资料。</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">
+                  <i class="fa fa-calendar mr-1"></i> 2025年4月
+                </span>
+                <a href="#" class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-colors">
+                  <i class="fa fa-download mr-1"></i> 下载
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 资源卡片5 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="h-48 bg-primary/10 flex items-center justify-center">
+              <i class="fa fa-file-code-o text-6xl text-primary"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">开源项目</h3>
+              <p class="text-gray-600 mb-4">我的一些开源项目代码和文档，欢迎使用和贡献。</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">
+                  <i class="fa fa-calendar mr-1"></i> 2025年3月
+                </span>
+                <a href="#" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+                  <i class="fa fa-download mr-1"></i> 下载
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 资源卡片6 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="h-48 bg-secondary/10 flex items-center justify-center">
+              <i class="fa fa-file-archive-o text-6xl text-secondary"></i>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">设计资源包</h3>
+              <p class="text-gray-600 mb-4">我的一些设计资源，包括图标、模板和素材等。</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">
+                  <i class="fa fa-calendar mr-1"></i> 2025年2月
+                </span>
+                <a href="#" class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-colors">
+                  <i class="fa fa-download mr-1"></i> 下载
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系部分 -->
+    <section id="contact" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dark mb-4">联系我</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            如果你对我的资源有任何疑问或建议，或者有合作机会，欢迎随时联系我。
+          </p>
+          <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-12">
+            <div>
+              <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
+                <h3 class="text-xl font-bold mb-6">联系方式</h3>
+                
+                <div class="space-y-6">
+                  <div class="flex items-start">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                      <i class="fa fa-envelope"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold mb-1">邮箱</h4>
+                      <p class="text-gray-600">your.email@example.com</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                      <i class="fa fa-phone"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold mb-1">电话</h4>
+                      <p class="text-gray-600">你的联系电话</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                      <i class="fa fa-map-marker"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold mb-1">地址</h4>
+                      <p class="text-gray-600">你的所在地</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="mt-8">
+                  <h4 class="font-semibold mb-4">关注我</h4>
+                  <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                      <i class="fa fa-github"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                      <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                      <i class="fa fa-instagram"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
+                <h3 class="text-xl font-bold mb-6">发送消息</h3>
+                
+                <form>
+                  <div class="mb-6">
+                    <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                    <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="请输入你的姓名">
+                  </div>
+                  
+                  <div class="mb-6">
+                    <label for="email" class="block text-gray-700 font-medium mb-2">邮箱</label>
+                    <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="请输入你的邮箱">
+                  </div>
+                  
+                  <div class="mb-6">
+                    <label for="subject" class="block text-gray-700 font-medium mb-2">主题</label>
+                    <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="请输入消息主题">
+                  </div>
+                  
+                  <div class="mb-6">
+                    <label for="message" class="block text-gray-700 font-medium mb-2">消息</label>
+                    <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="请输入你的消息内容"></textarea>
+                  </div>
+                  
+                  <button type="submit" class="w-full px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center">
+                    <i class="fa fa-paper-plane mr-2"></i> 发送消息
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">关于网站</h3>
+            <p class="text-gray-400 mb-4">这是我的个人资源中心网站，提供我的个人简历、作品集和其他相关资源的下载。</p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fa fa-github"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fa fa-linkedin"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-4">快速链接</h3>
+            <ul class="space-y-2">
+              <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于我</a></li>
+              <li><a href="#resources" class="text-gray-400 hover:text-white transition-colors">资源下载</a></li>
+              <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">联系我</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-4">联系方式</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <i class="fa fa-envelope-o mr-2 text-gray-400"></i>
+                <span class="text-gray-400">your.email@example.com</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fa fa-phone mr-2 text-gray-400"></i>
+                <span class="text-gray-400">你的联系电话</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fa fa-map-marker mr-2 text-gray-400"></i>
+                <span class="text-gray-400">你的所在地</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-800 pt-8 text-center">
+          <p class="text-gray-400">© 2025 Yvonne Wang. 保留所有权利.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 导航栏滚动效果
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('shadow-md');
+        header.classList.remove('shadow-sm');
+      } else {
+        header.classList.remove('shadow-md');
+        header.classList.add('shadow-sm');
+      }
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          // 关闭移动菜单（如果打开）
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+          
+          // 滚动到目标位置
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // 资源下载功能
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+      if (link.textContent.includes('下载')) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          alert('注意：这是一个示例网站，实际部署时请将链接替换为真实的资源文件地址。');
+        });
+      }
+    });
+    
+    // 表单提交
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('注意：这是一个示例网站，实际部署时请配置真实的表单提交处理。');
+      this.reset();
+    });
+  </script>
+
+    </body></html>
